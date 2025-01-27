@@ -47,7 +47,7 @@ public class DispatcherServlet extends HttpServlet {
 
     private void processRequest(Router router, HttpServletRequest req, HttpServletResponse resp) {
         try {
-            String route = req.getRequestURI();
+            String route = req.getPathInfo();
             ControllerMethodAdapter chosenMethodAdapter = router.matchRoute(route).chooseMethodAdapter(req);
 
             if (chosenMethodAdapter == null) {

@@ -38,7 +38,7 @@ public class Router {
         }
 
         List<String> routeFragments = Arrays.stream(route.split("/"))
-                .filter(String::isBlank)
+                .filter(str -> !str.isBlank())
                 .toList();
 
         RouteTrieElement curTrieElement = this.routeTrieRoot;
@@ -65,7 +65,7 @@ public class Router {
      */
     public ControllerMethodAdaptersContainer matchRoute(String route) throws RouteNotMatchedException {
         List<String> routeParts = Arrays.stream(route.split("/"))
-                .filter(String::isBlank)
+                .filter(str -> !str.isBlank())
                 .toList();
 
         if (routeParts.isEmpty()) {

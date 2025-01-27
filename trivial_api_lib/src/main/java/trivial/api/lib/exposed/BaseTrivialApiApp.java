@@ -28,7 +28,7 @@ public abstract class BaseTrivialApiApp implements ServletContextListener {
             ClassInfoList controllerClasses = scanResult.getClassesWithAnnotation(Controller.class);
 
             for (ClassInfo controllerClassInfo : controllerClasses) {
-                Class<?> clazz = controllerClassInfo.getClass();
+                Class<?> clazz = controllerClassInfo.loadClass();
 
                 if (!BaseController.class.isAssignableFrom(clazz)) {
                     throw new MisconfiguredControllerException("Class annotated with @Controller must extend BaseController");
