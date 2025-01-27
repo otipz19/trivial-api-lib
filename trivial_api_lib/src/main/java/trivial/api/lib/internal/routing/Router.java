@@ -4,7 +4,6 @@ import trivial.api.lib.exposed.BaseController;
 import trivial.api.lib.exposed.exceptions.InvalidRouteException;
 import trivial.api.lib.internal.controller.method.adapters.ControllerMethodAdaptersContainer;
 import trivial.api.lib.internal.exceptions.RouteNotMatchedException;
-import trivial.api.lib.internal.routing.routefragment.ExactRouteFragment;
 
 import java.lang.reflect.Method;
 import java.util.Arrays;
@@ -70,6 +69,9 @@ public class Router {
                 .toList();
 
         if (routeParts.isEmpty()) {
+            if (!routeTrieRoot.isEnding()) {
+                throw new RouteNotMatchedException(route);
+            }
             return routeTrieRoot.getMatchedMethods();
         }
 
