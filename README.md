@@ -25,3 +25,13 @@ mvn deploy:deploy-file
     -DupdateReleaseInfo=true
     -Dfile=./local-maven-repo/{lib-file-name}.jar
 ```
+
+5. Add to `<dependencies>` section of your `pom.xml`:
+
+```xml
+<dependency>
+    <groupId>otipz</groupId>
+    <artifactId>trivial.api.lib</artifactId>
+    <version>{version}</version>
+</dependency>
+```
